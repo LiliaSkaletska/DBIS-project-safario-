@@ -4,19 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Safario Travel - Contact</title>
-
-    <style>
-   table {
-    width: 300px; /* Ширина таблицы */
-    border: 1px solid purple; /* Рамка вокруг таблицы */
-    margin: auto; /* Выравниваем таблицу по центру окна  */
-   }
-   td {
-    text-align: center; /* Выравниваем текст по центру ячейки */
-   }
-  </style>
-
+  <title>Safario Travel - Package</title>
 
   <link rel="icon" href="{{ url_for ('static', filename= 'Fevicon.png')}}" >
   <link rel="stylesheet" href="{{ url_for ('static', filename= 'bootstrap.min.css')}}">
@@ -33,7 +21,7 @@
 </head>
 <body>
 
-   <!--================ Header Menu Area start =================-->
+  <!--================ Header Menu Area start =================-->
   <header class="header_area">
     <div class="main_menu">
       <nav class="navbar navbar-expand-lg navbar-light">
@@ -52,7 +40,7 @@
               <li class="nav-item"><a class="nav-link" href="{{ url_for ('contact')}}">Contact</a></li>
             </ul>
 
-          </div>
+          </div> 
         </div>
       </nav>
     </div>
@@ -65,29 +53,13 @@
   <section class="hero-banner-sm magic-ball magic-ball-banner" id="parallax-1" data-anchor-target="#parallax-1" data-300-top="background-position: 0px -80px" data-top-bottom="background-position: 0 100px">
     <div class="container">
       <div class="hero-banner-sm-content">
-        <h1>Thank for your application</h1>
-        <p>Your answer was saved, our manager will contact you soon! Here you can see your message</p>
+        <h1>Isn`t it tour, you have been looking for?</h1>
       </div>
     </div>
   </section>
+
+
   <!--================Hero Banner SM Area End =================-->
-
-<table border="5">
-    {% for key, value in result.items() %}
-    <tr>
-
-        <th>
-            {{key}}
-        </th>
-        <td>
-            {{value}}
-        </td>
-    </tr>
-    {% endfor%}
-</table>
-
-
-
 
  <!-- ================ start footer Area ================= -->
   <footer class="footer-area">
@@ -105,7 +77,10 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
   </footer>
   <!-- ================ End footer Area ================= -->
 
-<script src="{{ url_for ('static', filename= 'jquery-3.2.1.min.js')}}"></script>
+
+
+
+  <script src="{{ url_for ('static', filename= 'jquery-3.2.1.min.js')}}"></script>
   <script src="{{ url_for ('static', filename= 'bootstrap.bundle.min.js')}}"></script>
   <script src="{{ url_for ('static', filename= 'owl.carousel.min.js')}}"></script>
   <script src="{{ url_for ('static', filename= 'jquery.magnific-popup.min.js')}}"></script>
@@ -115,9 +90,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
   <!-- <script src="js/countdown.js"></script> -->
   <script src="{{ url_for ('static', filename= 'jquery.magnific-popup.min.js')}}"></script>
   <script src="{{ url_for ('static', filename= 'main.js')}}"></script>
-  <script src="{{ url_for ('static', filename= 'jquery.form.js')}}"></script>
-  <script src="{{ url_for ('static', filename= 'jquery.validate.min.js')}}"></script>
-
 
 
 </body>
