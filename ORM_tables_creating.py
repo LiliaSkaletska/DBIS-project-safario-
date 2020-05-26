@@ -52,13 +52,21 @@ class feedback (Base):
 
 
 
-class Tour (Base):
+class tour (Base):
     __tablename__ = 'tour'
     tour_name = Column(String(30), primary_key=True)
     country = Column(String(30), nullable=False)
     year_category = Column(String(30), nullable=False)
-    duration_tour = Column(Integer, nullable=False)
-    price = Column(Integer, nullable=False)
+    tour_duration =Column(String(30), nullable=False)
+    price_range = Column(String(30), nullable=False)
+    tour_price = Column(Integer, nullable=False)
+
+    def __init__(self, tour_name, country, year_category, tour_duration):
+        """"""
+        self.tour_name = tour_name
+        self.country = country
+        self.year_category = year_category
+        self.tour_duration = tour_duration
 
 Base.metadata.create_all(engine)
 
