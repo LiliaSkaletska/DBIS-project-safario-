@@ -52,6 +52,8 @@ def index():
         for row in select:
             results.append(row.tour_name)
 
+
+
         if 'search_results' in session:
             session.pop('search_results', None)
 
@@ -70,10 +72,10 @@ def package():
     global current_page
     current_page = "package"
     if 'search_results' in session:
-        results = session.get('search_results')
+        secresults = session.get('search_results')
     else:
-        results = []
-    return render_template("package.html", results=results)
+        secresults = []
+    return render_template("package.html", results=secresults)
 
 @app.route('/contact/', methods=['GET', 'POST'])
 def contact():

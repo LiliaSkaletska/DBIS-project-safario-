@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <style>
+
+        #box {
+            padding-top:40px;
+            width: 400px;
+            height: 100px;
+            border: 50px mediumpurple;
+            margin: 50px;
+            text-align:center;
+            font-size:32px;
+            font-weight:bold;
+        }
+        </style>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -38,6 +51,7 @@
               <li class="nav-item active"><a class="nav-link" href="{{ url_for ('index')}}">Home</a></li>
               <li class="nav-item"><a class="nav-link" href="{{ url_for ('package')}}">Packages</a>
               <li class="nav-item"><a class="nav-link" href="{{ url_for ('contact')}}">Contact</a></li>
+              <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/feedback/">Feedback</a></li>
             </ul>
 
           </div> 
@@ -57,9 +71,12 @@
       </div>
     </div>
   </section>
+  <div id="box">
 {% for name in results %}
   {{ name }}
   {% endfor %}
+
+    </div>
 
  <!-- ================ start footer Area ================= -->
   <footer class="footer-area">
