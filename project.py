@@ -4,7 +4,23 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from ORM_tables_creating import customer, feedback, tour
 from flask_sqlalchemy import SQLAlchemy
+import plotly
+import plotly.graph_objs as go
 
+import numpy as np
+import pandas as pd
+import json
+
+
+def pie(values1, values2, values3, values4):
+    labels = ['summer', 'autumn', 'spring', 'winter']
+    values = [values1, values2, values3, values4]
+
+    # Use hole to create a donut-like pie chart
+    fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=.3, marker_colors=['rgb(246, 255, 0)', 'rgb(250, 151, 37)', 'rgb(186, 242, 73)',
+                                                'rgb(87, 148, 153)'])])
+    graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+    return graphJSON
 
 global current_page
 current_page = "index"
@@ -26,8 +42,6 @@ db = SQLAlchemy(app)
 @app.route('/',  methods=['GET', 'POST'])
 def index():
     global current_page
-    #result=db.session.query(tour).filter_by(tour_name="Paris dream").first()
-    #print('result:', result)
     current_page = "index"
     form = FindTour()
     if form.is_submitted():
@@ -108,7 +122,6 @@ def contact():
        # except:
         #   result = request.form
          #  return render_template('submitfail.html', result=result)
-
     return render_template('contact.html', form=form)
 
 
@@ -144,6 +157,24 @@ def message():
          #   return render_template('submitfail.html', result=result)
 
     return render_template('feedback.html', form=form)
+
+
+
+@app.route('/analyse',  methods=['GET', 'POST'])
+def graphs():
+    summer=len(db.session.query(tour).filter_by(year_category="summer tour").all())
+    autumn = len(db.session.query(tour).filter_by(year_category="autumn tour").all())
+    spring = len(db.session.query(tour).filter_by(year_category="spring tour").all())
+    winter = len(db.session.query(tour).filter_by(year_category="winter tour").all())
+    print(summer, autumn, spring, winter)
+
+    checker1 = 0
+
+    if summer == 0 and autumn == 0 and spring == 0 and winter == 0:
+        checker1 = 1
+
+    pie_graph1 = pie(summer, autumn, spring, winter)
+    return render_template('analyse.html', plot1=pie_graph1,  checker1=checker1)
 
 if __name__ == '__main__':
    app.run()
