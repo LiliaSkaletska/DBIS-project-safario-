@@ -97,7 +97,7 @@ def contact():
     current_page = "contact"
     form = ContactForm()
     if form.is_submitted():
-       # try:
+        try:
             oracle_connection_string = 'oracle+cx_oracle://{username}:{password}@{host}:{port}/{sid}'
 
             engine = create_engine(oracle_connection_string.format(
@@ -119,9 +119,9 @@ def contact():
             session.commit()
             return render_template('contactsubmit.html', result=result)
 
-       # except:
-        #   result = request.form
-         #  return render_template('submitfail.html', result=result)
+        except:
+           result = request.form
+           return render_template('submitfail.html', result=result)
     return render_template('contact.html', form=form)
 
 
@@ -131,7 +131,7 @@ def message():
     current_page = "feedback"
     form = Feedback()
     if form.is_submitted():
-       # try:
+        try:
             oracle_connection_string = 'oracle+cx_oracle://{username}:{password}@{host}:{port}/{sid}'
             engine = create_engine(oracle_connection_string.format(
 
@@ -152,9 +152,9 @@ def message():
             session.commit()
             return render_template('contactsubmit.html', result=result)
 
-       # except:
-        #    result = request.form
-         #   return render_template('submitfail.html', result=result)
+        except:
+            result = request.form
+            return render_template('submitfail.html', result=result)
 
     return render_template('feedback.html', form=form)
 
